@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>VacationPhotos</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Vacation</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
-    <%= yield %>
-  </body>
+
+</head>
+<body>
+
+  <div id="fb-root"></div>
+
+
+  <% if @current_user %>
+    <%= link_to "Sign out", sign_in_path, method: :delete %>
+    <% else %>
+  <%= link_to "Sign up", new_user_path %>
+  <%= link_to "Sign in", sign_in_path %>
+
+<% end %>
+
+
+
+<%= yield %>
+
+</body>
 </html>
